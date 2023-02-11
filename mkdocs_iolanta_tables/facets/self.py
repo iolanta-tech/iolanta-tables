@@ -1,7 +1,7 @@
-from more_itertools import first
-
 from iolanta.facet import Facet
 from iolanta.renderer import render
+from more_itertools import first
+
 from mkdocs_iolanta_tables.models import TABLE
 
 

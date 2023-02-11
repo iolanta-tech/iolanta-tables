@@ -2,12 +2,12 @@ from pathlib import Path
 from typing import Any, Dict
 
 from deepmerge import always_merger
+from iolanta.conversions import path_to_url
 from mkdocs.config import Config
 from mkdocs.structure.files import Files
 from mkdocs.structure.pages import Page
-
-from iolanta.conversions import path_to_url
 from mkdocs_iolanta.mixins import OctadocsMixin
+
 from mkdocs_iolanta_tables.models import TABLE
 
 

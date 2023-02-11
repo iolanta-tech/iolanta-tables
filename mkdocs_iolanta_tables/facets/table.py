@@ -6,12 +6,12 @@ from typing import Any, Dict, Iterable, List, Optional, Tuple, TypeVar
 import funcy
 from dominate.tags import table, td, th
 from dominate.util import raw
-from rdflib import URIRef
-
 from iolanta.facet import Facet
 from iolanta.iolanta import Iolanta
 from iolanta.models import NotLiteralNode
 from iolanta.renderer import HTML, render
+from rdflib import URIRef
+
 from mkdocs_iolanta_tables.facets.errors import (
     TableBodyNotFound,
     TableColumnsNotFound,

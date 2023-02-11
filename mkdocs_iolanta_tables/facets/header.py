@@ -1,8 +1,8 @@
 from typing import Union
 
 from dominate.tags import html_tag, th, thead, tr
-
 from iolanta.namespaces import IOLANTA
+
 from mkdocs_iolanta_tables.facets.base import IolantaTablesFacet
 
 

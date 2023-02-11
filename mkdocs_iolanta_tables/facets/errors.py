@@ -1,7 +1,6 @@
 from dataclasses import dataclass
 
 from documented import DocumentedError
-
 from iolanta.models import NotLiteralNode
 
 

@@ -3,9 +3,9 @@ from typing import Union
 
 import funcy
 from dominate.tags import html_tag, td, tr
-
 from iolanta.models import NotLiteralNode
 from iolanta.namespaces import IOLANTA
+
 from mkdocs_iolanta_tables.facets.base import IolantaTablesFacet
 from mkdocs_iolanta_tables.facets.errors import TableColumnsNotFound
 from mkdocs_iolanta_tables.models import TABLE

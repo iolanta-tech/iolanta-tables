@@ -4,9 +4,9 @@ from pathlib import Path
 from typing import Iterable, List
 
 import funcy
-
 from iolanta.facet import Facet
 from iolanta.models import NotLiteralNode
+
 from mkdocs_iolanta_tables.facets.models import Direction, EmptyValues, OrderBy
 from mkdocs_iolanta_tables.models import TABLE
 
