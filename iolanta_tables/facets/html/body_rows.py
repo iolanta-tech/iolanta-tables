@@ -4,8 +4,8 @@ import funcy
 from dominate.tags import html_tag, tbody
 from rdflib import URIRef
 
-from mkdocs_iolanta_tables.facets.base import TableBody
-from mkdocs_iolanta_tables.facets.models import Direction
+from iolanta_tables.facets.html.base import TableBody
+from iolanta_tables.facets.html.models import Direction
 
 
 class BodyRows(TableBody):

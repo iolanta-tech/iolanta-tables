@@ -18,3 +18,6 @@ jeeves-yeti-pyproject = "^0.2.11"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.plugins."iolanta.plugins"]
+tables = "iolanta_tables:IolantaTables"

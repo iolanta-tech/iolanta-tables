@@ -1,7 +1,7 @@
 - $id: table:Table
   rdfs:comment: "Definition of a table."
   iolanta:instanceFacet:
-    - $id: python://mkdocs_iolanta_tables.facets.Table
+    - $id: python://iolanta_tables.facets.html.Table
       iolanta:supports:
         $id: iolanta:html
     - $id: templates://octadocs-table/table.html
@@ -10,49 +10,49 @@
     - owl:onProperty:
         $id: iolanta:isSupportedBy
       owl:hasValue:
-        $id: python://mkdocs_iolanta_tables.facets.self.SelfFacet
+        $id: python://iolanta_tables.facets.html.self.SelfFacet
     - owl:onProperty:
         $id: iolanta:isSupportedBy
       owl:hasValue:
-        $id: python://mkdocs_iolanta_tables.facets.self.TableHeader
+        $id: python://iolanta_tables.facets.html.self.TableHeader
 
 - $id: table:class
   rdfs:range:
     $id: table:ClassList
     iolanta:instanceFacet:
-      $id: python://mkdocs_iolanta_tables.facets.BodyClass
+      $id: python://iolanta_tables.facets.html.BodyClass
       iolanta:supports:
         $id: table:body
     iolanta:hasDefaultFacet:
-      $id: python://mkdocs_iolanta_tables.facets.TableRow
+      $id: python://iolanta_tables.facets.html.TableRow
     rdfs:subClassOf:
       owl:onProperty:
         $id: iolanta:hasDefaultFacet
       owl:hasValue:
-        $id: python://mkdocs_iolanta_tables.facets.TableRow
+        $id: python://iolanta_tables.facets.html.TableRow
 
 - $id: table:Rows
   iolanta:instanceFacet:
-    $id: python://mkdocs_iolanta_tables.facets.BodyRows
+    $id: python://iolanta_tables.facets.html.BodyRows
     iolanta:supports:
       - $id: table:body
   rdfs:subClassOf:
     owl:onProperty:
       $id: iolanta:hasDefaultFacet
     owl:hasValue:
-      $id: python://mkdocs_iolanta_tables.facets.TableRow
+      $id: python://iolanta_tables.facets.html.TableRow
 
 - $id: table:header
   iolanta:hasDefaultFacet:
-    $id: python://mkdocs_iolanta_tables.facets.TableHeader
+    $id: python://iolanta_tables.facets.html.TableHeader
 
 - $id: table:rows
   rdfs:range:
     $id: table:Rows
     iolanta:instanceFacet:
-      $id: python://mkdocs_iolanta_tables.facets.TableRows
+      $id: python://iolanta_tables.facets.html.TableRows
   iolanta:hasDefaultFacet:
-    $id: python://mkdocs_iolanta_tables.facets.TableRow
+    $id: python://iolanta_tables.facets.html.TableRow
 
 - $id: table:columns
   rdfs:domain:
@@ -88,7 +88,7 @@
 - $id: table:self
   rdfs:label: ""
   iolanta:facet:
-    $id: python://mkdocs_iolanta_tables.facets.self.SelfFacet
+    $id: python://iolanta_tables.facets.html.self.SelfFacet
     iolanta:supports:
       $id: table:th
 

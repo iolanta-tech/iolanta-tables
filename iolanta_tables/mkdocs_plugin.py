@@ -8,7 +8,7 @@ from mkdocs.structure.files import Files
 from mkdocs.structure.pages import Page
 from mkdocs_iolanta.mixins import OctadocsMixin
 
-from mkdocs_iolanta_tables.models import TABLE
+from iolanta_tables.models import TABLE
 
 
 class TablesPlugin(OctadocsMixin):

@@ -12,12 +12,12 @@ from iolanta.models import NotLiteralNode
 from iolanta.renderer import HTML, render
 from rdflib import URIRef
 
-from mkdocs_iolanta_tables.facets.errors import (
+from iolanta_tables.facets.html.errors import (
     TableBodyNotFound,
     TableColumnsNotFound,
 )
-from mkdocs_iolanta_tables.facets.models import Direction, EmptyValues, OrderBy
-from mkdocs_iolanta_tables.models import TABLE
+from iolanta_tables.facets.html.models import Direction, EmptyValues, OrderBy
+from iolanta_tables.models import TABLE
 
 Row = Dict[URIRef, Any]   # type: ignore
 ColumnValue = TypeVar('ColumnValue')

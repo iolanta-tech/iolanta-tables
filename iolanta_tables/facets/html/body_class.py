@@ -4,7 +4,7 @@ import funcy
 from dominate.tags import html_tag, tbody
 from iolanta.models import NotLiteralNode
 
-from mkdocs_iolanta_tables.facets.base import TableBody
+from iolanta_tables.facets.html.base import TableBody
 
 
 class BodyClass(TableBody):

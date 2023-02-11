@@ -7,8 +7,8 @@ import funcy
 from iolanta.facet import Facet
 from iolanta.models import NotLiteralNode
 
-from mkdocs_iolanta_tables.facets.models import Direction, EmptyValues, OrderBy
-from mkdocs_iolanta_tables.models import TABLE
+from iolanta_tables.facets.html.models import Direction, EmptyValues, OrderBy
+from iolanta_tables.models import TABLE
 
 
 @dataclass

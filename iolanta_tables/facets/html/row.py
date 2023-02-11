@@ -6,9 +6,9 @@ from dominate.tags import html_tag, td, tr
 from iolanta.models import NotLiteralNode
 from iolanta.namespaces import IOLANTA
 
-from mkdocs_iolanta_tables.facets.base import IolantaTablesFacet
-from mkdocs_iolanta_tables.facets.errors import TableColumnsNotFound
-from mkdocs_iolanta_tables.models import TABLE
+from iolanta_tables.facets.html.base import IolantaTablesFacet
+from iolanta_tables.facets.html.errors import TableColumnsNotFound
+from iolanta_tables.models import TABLE
 
 
 @dataclass

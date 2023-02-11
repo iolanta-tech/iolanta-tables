@@ -3,8 +3,6 @@ from enum import Enum
 
 from rdflib import URIRef
 
-from mkdocs_iolanta_tables.models import TABLE
-
 
 class Direction(str, Enum):
     """Sorting direction."""
