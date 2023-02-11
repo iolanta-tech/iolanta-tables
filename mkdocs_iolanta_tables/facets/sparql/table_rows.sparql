@@ -1,0 +1,1 @@
+SELECT ?rows WHERE { $table table:rows ?rows }

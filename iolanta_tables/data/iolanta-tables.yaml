@@ -1,0 +1,117 @@
+- $id: table:Table
+  rdfs:comment: "Definition of a table."
+  iolanta:instanceFacet:
+    - $id: python://mkdocs_iolanta_tables.facets.Table
+      iolanta:supports:
+        $id: iolanta:html
+    - $id: templates://octadocs-table/table.html
+      $type: mkdocs:PageFacet
+  owl:equivalentClass:
+    - owl:onProperty:
+        $id: iolanta:isSupportedBy
+      owl:hasValue:
+        $id: python://mkdocs_iolanta_tables.facets.self.SelfFacet
+    - owl:onProperty:
+        $id: iolanta:isSupportedBy
+      owl:hasValue:
+        $id: python://mkdocs_iolanta_tables.facets.self.TableHeader
+
+- $id: table:class
+  rdfs:range:
+    $id: table:ClassList
+    iolanta:instanceFacet:
+      $id: python://mkdocs_iolanta_tables.facets.BodyClass
+      iolanta:supports:
+        $id: table:body
+    iolanta:hasDefaultFacet:
+      $id: python://mkdocs_iolanta_tables.facets.TableRow
+    rdfs:subClassOf:
+      owl:onProperty:
+        $id: iolanta:hasDefaultFacet
+      owl:hasValue:
+        $id: python://mkdocs_iolanta_tables.facets.TableRow
+
+- $id: table:Rows
+  iolanta:instanceFacet:
+    $id: python://mkdocs_iolanta_tables.facets.BodyRows
+    iolanta:supports:
+      - $id: table:body
+  rdfs:subClassOf:
+    owl:onProperty:
+      $id: iolanta:hasDefaultFacet
+    owl:hasValue:
+      $id: python://mkdocs_iolanta_tables.facets.TableRow
+
+- $id: table:header
+  iolanta:hasDefaultFacet:
+    $id: python://mkdocs_iolanta_tables.facets.TableHeader
+
+- $id: table:rows
+  rdfs:range:
+    $id: table:Rows
+    iolanta:instanceFacet:
+      $id: python://mkdocs_iolanta_tables.facets.TableRows
+  iolanta:hasDefaultFacet:
+    $id: python://mkdocs_iolanta_tables.facets.TableRow
+
+- $id: table:columns
+  rdfs:domain:
+    $id: table:Table
+  rdfs:range:
+    $id: table:ColumnList
+
+- $id: table:ColumnList
+  comment: RDF List of table columns
+  owl:equivalentClass:
+    - owl:onProperty:
+        $id: rdf:first
+      owl:allValuesFrom:
+        $id: table:Column
+      rdfs:comment: Head of the list is always a column
+    - owl:onProperty:
+        $id: rdf:rest
+      owl:allValuesFrom:
+        $id: table:ColumnList
+      rdfs:comment: remainder of a list is always a list. These two clauses exist in order to mark `table:Column` instances as such.
+
+- $id: table:td
+  $type: iolanta:Environment
+  skos:has-broader: iolanta:html
+  rdfs:label: <td>
+  iolanta:hasDefaultFacet:
+    $id: python://mkdocs_iolanta.facets.Default
+
+- $id: python://mkdocs_iolanta.facets.bool_literal.BoolLiteral
+  iolanta:supports:
+    $id: table:td
+
+- $id: table:self
+  rdfs:label: ""
+  iolanta:facet:
+    $id: python://mkdocs_iolanta_tables.facets.self.SelfFacet
+    iolanta:supports:
+      $id: table:th
+
+- $id: table:direction
+  rdfs:label: Ordering direction
+
+- $id: table:OrderByDirection
+  rdfs:label: Ordering direction
+  rdfs:comment: Direction (ascending or descending) to sort a table column.
+
+- $id: table:asc
+  $type: table:OrderByDirection
+
+- $id: table:desc
+  $type: table:OrderByDirection
+
+- $id: table:empty-values
+  rdfs:label: Where to put empty cells when sorting?
+
+- $id: table:first
+  rdfs:label: Empty values first
+  $type: table:EmptyValuesOrder
+
+- $id: table:last
+  rdfs:label: Empty values last
+  $type: table:EmptyValuesOrder

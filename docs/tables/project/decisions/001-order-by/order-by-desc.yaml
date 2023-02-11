@@ -1,0 +1,8 @@
+table:class: ArdaCountries
+table:columns:
+  - country-name
+  - race
+
+table:order-by:
+  - country-name
+  - race: table:desc

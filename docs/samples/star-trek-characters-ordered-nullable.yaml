@@ -1,0 +1,13 @@
+$id: star-trek-characters-ordered-nullable
+
+table:columns:
+  - name
+  - origin
+  - rank
+
+table:class: StarTrekCharacter
+
+table:order-by:
+  - origin
+  - rank:
+      table:empty-values: last

@@ -1,0 +1,42 @@
+site_name: iolanta-tables
+site_url: https://iolanta.tech/tables
+repo_url: https://github.com/iolanta-tech/iolanta-tables
+repo_name: iolanta-tables
+copyright: Copyright © 2023 iolanta.tech
+
+markdown_extensions:
+  - admonition
+  - codehilite
+  - attr_list
+  - pymdownx.superfences
+  - pymdownx.details
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+
+plugins:
+  - search
+  - awesome-pages
+  - mkdocs-iolanta
+  - mkdocstrings:
+      handlers:
+        python:
+          import:
+            - https://docs.python-requests.org/en/master/objects.inv
+  - macros:
+      on_error_fail: true
+      modules:
+        - mkdocs_iolanta.macros
+        - macros
+
+theme:
+  name: material
+  custom_dir: templates
+  features:
+    - navigation.sections
+    - navigation.indexes
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - content.code.annotate

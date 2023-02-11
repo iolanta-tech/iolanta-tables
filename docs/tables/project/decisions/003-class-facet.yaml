@@ -1,0 +1,33 @@
+"@context":
+  roadmap: https://mkdocs.iolanta.tech/roadmap/
+
+roadmap:roadmap:
+  - title: There is no way for `TableRow` facet to find the column list when rendering a `table:class`
+    branches:
+       - title: Use the table itself as rendering target
+         # Is this `contra` right?
+         contra:
+           - title: Inconsistent against the table:rows implementation
+             description: table:rows uses its auto generated blank node
+       - title: Generate a blank node unique per table and use it as rendering target
+         description: |
+           - $table table:class ?blank .
+           - ?blank table:use-class $class .
+         branches:
+           - title: With JSON-LD
+             branches:
+               - title: "$container: $list"
+                 description: Works! Creates a list. However, it is unclear what semantics multiple classes would have. A cartesian product?..
+               - title: "$container: …"
+                 description: Does not work, does not create an empty node.
+               - title: "$nest: …"
+                 description: Inapplicable.
+               - title: "$…: …"
+                 description: Haven't found anything suitable ☹
+           - title: With OWL
+             description: This is essentially property transfer which OWL does not support.
+           - title: With Python
+             branches:
+               - title: Generate YAML files
+                 description: how does relate to Iolanta? It isn't necessarily able to create files anywhere
+               - title: Write triples to the graph directly

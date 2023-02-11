@@ -1,0 +1,9 @@
+SELECT * WHERE {
+  {
+    ?table table:class $environment .
+  } UNION {
+    ?table table:rows $environment .
+  }
+
+  ?table table:columns ?column_list .
+}

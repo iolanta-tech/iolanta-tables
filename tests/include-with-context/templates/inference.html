@@ -1,0 +1,93 @@
+{% import "macros.html" as macros with context %}
+
+{% macro source(rule) %}
+    {{ macros.link(rdfs.seeAlso) }}
+    <a href="{{ rule.source }}">{{ rule.source_label }}</a> <a href="{{ rule.source_download }}">📥</a>
+{% endmacro %}
+
+
+{% macro tags(rule) %}
+    {% set tags = queries.inference.groups(rule=rule.rule) %}
+    {% for tag in tags %}
+        <div class="ui item inference-rule-tag" data-content="{{ tag.comment }}">
+            {{ tag.symbol }} {{ tag.label }}
+        </div>
+    {% endfor %}
+{% endmacro %}
+
+{% macro inference_rules(this) %}
+    <script type="text/javascript">
+    $(function() {
+        $('.inference-rule-tag').popup();
+    });
+    </script>
+
+    {% set rules = queries.inference.rules(this=this) %}
+
+    {% if rules %}
+        <h2 class="ui header">Inference Rules</h2>
+
+        <style>
+            .ui.steps .step.orange,
+            .ui.steps .step.orange::after {
+                background-color: #FFE6CC;
+            }
+
+            .ui.steps .step.grey,
+            .ui.steps .step.grey::after {
+                background-color: #F5F5F5;
+            }
+
+            .ui.steps .step.yellow,
+            .ui.steps .step.yellow::after {
+                background-color: #FFF2CC;
+            }
+
+            .ui.steps .step.red,
+            .ui.steps .step.red::after {
+                background-color: #F8CECC;
+            }
+
+            .ui.steps .step.purple,
+            .ui.steps .step.purple::after {
+                background-color: #E1D5E7;
+            }
+
+            .ui.steps .step.blue,
+            .ui.steps .step.blue::after {
+                background-color: #DAE8FC;
+            }
+
+            .ui.steps .step.green,
+            .ui.steps .step.green::after {
+                background-color: #D5E8D4;
+            }
+        </style>
+
+        {% for rule in rules %}
+            <h3 class="ui header">{{ rule.label }}</h3>
+            <div class="ui segments">
+                <div class="ui content segment">
+                    <div class="ui two column very relaxed grid">
+                        <div class="column">
+                            {{ macros.list_triples(rule.rule, local.given) }}
+                        </div>
+                        <div class="column">
+                            {{ macros.list_triples(rule.rule, local.infer) }}
+                        </div>
+                    </div>
+                    <div class="ui vertical divider grey header">
+                        ⇒
+                    </div>
+                </div>
+                <div class="ui secondary segment align-right">
+                    <div class="ui relaxed horizontal list">
+                        <div class="item">{{ source(rule) }}</div>
+                        {{ tags(rule) }}
+                    </div>
+                </div>
+            </div>
+            <br/><br/>
+        {% endfor %}
+    {% endif %}
+{% endmacro %}

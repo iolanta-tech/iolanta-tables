@@ -1,0 +1,21 @@
+---
+$id: table
+
+table:columns:
+  - name
+  - color
+  - birthday
+
+table:rows:
+  - name: Ray
+    color: Red
+    birthday: 2010-01-01
+  - name: Smoky
+    color: Gray
+    birthday: 2010-12-10
+
+table:order-by: birthday
+
+---
+
+{{ render('table') }}

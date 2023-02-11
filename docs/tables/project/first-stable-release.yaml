@@ -1,0 +1,28 @@
+- title: Implement first version of iolanta-graph for MkDocs
+  description: To illustrate the docs and to help debugging
+  blocks:
+    - title: "Run `iolanta serve`, open browser and traverse the graph"
+      description: https://localhost:9000/local:planets
+      is-blocked-by: iolanta-whitepaper
+
+- title: Choose editor for Iolanta
+  document: and document that
+
+- title: Remove empty-values because they do not work
+
+- title: "`table:order-by` does not work with `table:class`"
+  $type: Bug
+  blocks: mkdocs-iolanta-tables-first-release
+
+- title: "`Project` title in navigation is not formatted as a section"
+  $type: Bug
+  blocks: mkdocs-iolanta-tables-first-release
+
+- title: mkdocs-iolanta-tables stable release
+  $id: mkdocs-iolanta-tables-first-release
+  subtasks:
+    - title: Implement page level facets
+    - title: Implement debugging tools
+      blocks: mkdocs-iolanta-tables-first-release
+      branches:
+        - title: Implement first version of iolanta-record for CLI

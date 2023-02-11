@@ -1,0 +1,6 @@
+$id: self
+
+table:class: mkdocs:File
+table:columns:
+  - table:self
+  - mkdocs:url

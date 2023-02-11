@@ -1,0 +1,47 @@
+"@context":
+  roadmap: https://mkdocs.iolanta.tech/roadmap/
+
+roadmap:roadmap:
+  - title: Implement `table:order-by` functionality with new facet system
+    branches:
+      - title: Order values in SPARQL
+        description: Generate SPARQL query which is used used retrieve rows
+        blocks:
+          - order-by-ldflex
+          - self-label-composite
+
+      - title: Order values in Python
+        description: Render all cells of the table first, and then sort them
+        subtasks:
+          - title: Merge BodyRows & BodyClass facets + TableRow facet
+            description: It is impossible to separate TableRow if we render every cell in the upper level facet. Therefore, it is harder to customize how rows and cells look.
+            conflicts-with: row-color-facet
+
+          - Render table:columns & table:order-by @ BodyRows facet
+          - Render table:columns & table:order-by @ BodyClass facet
+        blocks: self-label-rendered
+      - title: Order values in JavaScript
+        conflicts-with: non-column-property
+
+  - title: Generate ORDER BY clause with LDFlex
+    $id: order-by-ldflex
+    subtasks:
+      - Review Sqeleton library
+
+  - title: Order by rdfs:label of table:self
+    branches:
+      - title: Naturally order as a consequence of rendering cells and then ordering them
+        $id: self-label-rendered
+      - title: Create a composite property and order by it
+        $id: self-label-composite
+
+  - title: Order by a property that is not present in the table
+    $id: non-column-property
+    $type: Goal
+
+  - title: Customize color & style of rows & cells
+    $type: Goal
+    branches:
+      - title: With separate facets
+        $id: row-color-facet
+      - title: By inheritance from BodyRows or BodyClass facet

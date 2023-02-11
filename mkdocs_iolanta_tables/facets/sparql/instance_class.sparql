@@ -1,0 +1,1 @@
+SELECT ?class_list WHERE { $table table:class ?class_list }

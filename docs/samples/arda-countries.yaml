@@ -1,0 +1,11 @@
+$id: arda-countries
+
+table:columns:
+  - $id: country-name
+    title: Name of the country
+
+table:rows:
+  - country-name: Angmar
+    $id: angmar
+  - country-name: Mordor
+  - country-name: Gondor

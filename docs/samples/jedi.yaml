@@ -1,0 +1,13 @@
+- $id: jedi
+  table:class: Jedi
+  table:columns:
+    - name
+
+- name: Yoda
+  $type: Jedi
+
+- name: Anakin Skywalker
+  $type: Jedi
+
+- name: Obi-wan Kenobi
+  $type: Jedi

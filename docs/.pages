@@ -1,0 +1,10 @@
+nav:
+    - mkdocs-iolanta:
+      - render.md
+      - "mkdocs:":
+        - File.md
+        - title.md
+        - url.md
+      - ...
+
+    - tables

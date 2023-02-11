@@ -1,0 +1,3 @@
+roadmap:roadmap:
+  - title: mkdocs-iolanta still adds data files using MkDocs plugin instead of iolanta plugin
+    $type: Bug

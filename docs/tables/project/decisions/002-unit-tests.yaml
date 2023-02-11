@@ -1,0 +1,42 @@
+"@context":
+  ibis: https://ibis.dev/
+  adr: https://mkdocs.iolanta.tech/adr/
+
+  👎:
+    "@id": ibis:opposed-by
+    "@type": "@id"
+  👍:
+    "@id": ibis:supported-by
+    "@type": "@id"
+
+  ⇒: ibis:suggests
+
+  # FIXME: Puzzled about this one
+  💡: ibis:response
+
+  🗨: title
+  ✔️: adr:Decision
+  ∊: "@type"
+  ∃: "@id"
+
+# Note: title of the ADR is the _solution_.
+🗨: Unit test through MkDocs
+ibis:responds-to:
+  🗨: How to unit test mkdocs-iolanta-tables?
+  💡:
+    - 🗨: With pure iolanta
+      👍:
+        # I wonder whether 👍 + 🗨 can be inferred from 👍 automatically.
+        - 🗨: Simpler code of the unit tests
+      👎:
+        - ∃: root-context-from-plugins
+          🗨: Root context is assembled via MkDocs plugins
+        - ∃: we-are-testing-mkdocs-here
+          🗨: Testing Iolanta would be similar to a unit test, and testing MkDocs is more of an integration test which is a more comprehensive solution.
+        - ∃: test-mkdocs-yml
+          🗨: If testing via MkDocs we can also check mkdocs.yml, with pure iolanta we cannot.
+    - 🗨: Via MkDocs
+      👍:
+        - root-context-from-plugins
+        - we-are-testing-mkdocs-here
+        - test-mkdocs-yml

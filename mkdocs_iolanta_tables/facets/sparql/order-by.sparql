@@ -1,0 +1,24 @@
+SELECT * WHERE {
+  {
+    ?table table:rows $iri .
+  } UNION {
+    ?table table:class $iri .
+  }
+
+  ?table table:order-by/rdf:rest*/rdf:first ?column_spec .
+
+  OPTIONAL {
+    ?column_spec ?column ?column_properties .
+    FILTER(isBlank(?column_properties)) .
+
+    OPTIONAL {
+      ?column_properties table:direction ?direction .
+      ?direction a table:OrderByDirection .
+    }
+
+    OPTIONAL {
+      ?column_properties table:empty-values ?empty_values .
+      ?empty_values a table:EmptyValuesOrder .
+    }
+  }
+}

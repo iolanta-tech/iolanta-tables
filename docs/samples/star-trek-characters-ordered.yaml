@@ -1,0 +1,12 @@
+$id: star-trek-characters-ordered
+
+table:columns:
+  - name
+  - origin
+  - shirt-color
+
+table:class: StarTrekCharacter
+
+table:order-by:
+  - origin
+  - shirt-color
