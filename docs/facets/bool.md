@@ -17,4 +17,4 @@ Render boolean values.
 
 ## Code
 
-::: mkdocs_iolanta.facets.bool_literal.BoolLiteral
+::: iolanta.facets.html.bool_literal.BoolLiteral

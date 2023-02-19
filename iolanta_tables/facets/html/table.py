@@ -9,7 +9,7 @@ from dominate.util import raw
 from iolanta.facet import Facet
 from iolanta.iolanta import Iolanta
 from iolanta.models import NotLiteralNode
-from iolanta.renderer import HTML, render
+from iolanta.renderer import HTML
 from rdflib import URIRef
 
 from iolanta_tables.facets.html.errors import (
@@ -31,9 +31,8 @@ def construct_headers(
     """Construct table headers."""
     return (
         th(
-            render(
+            iolanta.render(
                 node=column,
-                iolanta=iolanta,
                 # FIXME:
                 #   title: Use the table:columns blank node as environment here
                 environments=[table_iri, TABLE.th, HTML],
@@ -102,9 +101,8 @@ def render_row(
             continue
 
         cell_content = str(
-            render(
+            iolanta.render(
                 node=cell_value,
-                iolanta=iolanta,
                 environments=[column, TABLE.td, HTML],
             ),
         )

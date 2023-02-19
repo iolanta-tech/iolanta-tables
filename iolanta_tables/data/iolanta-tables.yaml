@@ -5,7 +5,7 @@
       iolanta:supports:
         $id: iolanta:html
     - $id: templates://octadocs-table/table.html
-      $type: mkdocs:PageFacet
+      $type: iolanta:PageFacet
   owl:equivalentClass:
     - owl:onProperty:
         $id: iolanta:isSupportedBy
@@ -79,9 +79,9 @@
   skos:has-broader: iolanta:html
   rdfs:label: <td>
   iolanta:hasDefaultFacet:
-    $id: python://mkdocs_iolanta.facets.Default
+    $id: python://iolanta.facets.html.Default
 
-- $id: python://mkdocs_iolanta.facets.bool_literal.BoolLiteral
+- $id: python://iolanta.facets.html.bool_literal.BoolLiteral
   iolanta:supports:
     $id: table:td
 

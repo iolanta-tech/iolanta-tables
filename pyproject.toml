@@ -9,11 +9,12 @@ packages = [{include = "iolanta_tables"}]
 
 [tool.poetry.dependencies]
 python = ">=3.10,<4.0"
-iolanta = "^0.1.3"
+iolanta = "^1.0.2"
 dominate = "^2.7.0"
 
 [tool.poetry.group.dev.dependencies]
 jeeves-yeti-pyproject = "^0.2.11"
+beautifulsoup4 = "^4.11.2"
 
 [build-system]
 requires = ["poetry-core"]
