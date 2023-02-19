@@ -5,7 +5,6 @@ from dominate.tags import code, table, td, tr
 from dominate.util import raw
 from iolanta.facet import Facet
 from iolanta.namespaces import LOCAL
-from iolanta.renderer import render
 
 CODE_TEMPLATE = """
 ```{language} title="{title}"
@@ -31,9 +30,8 @@ class SideBySide(Facet):
         return table(
             tr(
                 td(
-                    render(
+                    self.render(
                         page,
-                        iolanta=self.iolanta,
                         environments=[LOCAL.term('code')],
                     ),
                 ),
@@ -48,7 +46,7 @@ class SideBySide(Facet):
                             '',
                         ),
                     ),
-                    render(self.iri, iolanta=self.iolanta),
+                    self.render(self.iri),
                 ),
             ),
             data_facet='side-by-side',

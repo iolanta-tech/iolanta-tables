@@ -1,12 +1,8 @@
----
 $id: table
 
 table:columns:
   - $id: foo
-    title: FOO
+    rdfs:label: FOO
 
 table:rows:
   - foo: bar
----
-
-{{ render('table') }}

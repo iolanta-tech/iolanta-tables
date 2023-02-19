@@ -1,4 +1,4 @@
-$id: bool-table
+$id: table
 table:columns:
   - boolean-value
 table:rows:

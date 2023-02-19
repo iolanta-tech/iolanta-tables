@@ -1,5 +1,4 @@
 from iolanta.facet import Facet
-from iolanta.renderer import render
 from more_itertools import first
 
 from iolanta_tables.models import TABLE
@@ -30,8 +29,7 @@ class SelfFacet(Facet):
         except ValueError:
             return ''
 
-        return render(
+        return self.render(
             node=instance_class,
-            iolanta=self.iolanta,
             environments=[TABLE.th],
         )

@@ -1,4 +1,3 @@
----
 $id: table
 table:class: Foo
 table:columns:
@@ -7,8 +6,5 @@ table:columns:
 
 $included:
   - $type: Foo
-    title: Badoom
+    rdfs:label: Badoom
     name: boo
----
-
-{{ render('table') }}

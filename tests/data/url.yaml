@@ -1,0 +1,7 @@
+$id: table
+table:columns:
+  - link
+table:rows:
+  - link:
+      rdfs:label: boo
+      schema:url: https://boo.com
