@@ -1,12 +1,13 @@
 from pathlib import Path
-from typing import Union, Type
+from typing import Type, Union
 
 import funcy
 import pytest
-from dominate.tags import table, thead, tbody, tr, td, th, html_tag
+from dominate.tags import html_tag, table, tbody, td, th, thead, tr
 from iolanta.iolanta import Iolanta
-from iolanta.namespaces import LOCAL, IOLANTA
+from iolanta.namespaces import IOLANTA, LOCAL
 from iolanta.parsers.errors import SpaceInProperty
+from yaml.parser import ParserError
 
 
 @pytest.mark.parametrize(
@@ -28,25 +29,75 @@ from iolanta.parsers.errors import SpaceInProperty
             'class.yaml',
             table(
                 thead(tr(th(), th('Name'))),
-                tbody(tr(td('Badoom'), td('boo')))
+                tbody(tr(td('Badoom'), td('boo'))),
             ),
         ),
-        ('column-title.yaml', table()),
-        ('description-column.yaml', table()),
-        ('invalid.yaml', table()),
-        ('order.yaml', table()),
-        ('self-without-class.yaml', table()),
-        ('space in filename.yaml', table(
-            thead(tr(th('Description'))),
-            tbody(tr(td('foo'))),
-        )),
+        (
+            'column-title.yaml',
+            table(
+                thead(tr(th('FOO'))),
+                tbody(tr(td('bar'))),
+            ),
+        ),
+        (
+            'description-column.yaml',
+            table(
+                thead(tr(th('Description'))),
+                tbody(tr(td('foo'))),
+            ),
+        ),
+        ('invalid.yaml', ParserError),
+        (
+            'order.yaml',
+            table(
+                thead(
+                    tr(
+                        th('Name'),
+                        th('Color'),
+                        th('Birthday'),
+                    ),
+                ),
+                tbody(
+                    tr(td('Ray'), td('Red'), td('2010-01-01')),
+                    tr(td('Smoky'), td('Gray'), td('2010-12-10')),
+                ),
+            ),
+        ),
+        (
+            'self-without-class.yaml',
+            table(
+                thead(
+                    tr(
+                        th(''),
+                        th('Name'),
+                    ),
+                ),
+                tbody(
+                    tr(
+                        td('badoom'),
+                        td('boo'),
+                    ),
+                ),
+            ),
+        ),
+        (
+            'space in filename.yaml', table(
+                thead(tr(th('Description'))),
+                tbody(tr(td('foo'))),
+            ),
+        ),
         ('space-in-property.yaml', SpaceInProperty),
-        ('url.yaml', table()),
+
+        # FIXME: uncomment this when a newer version of Iolanta is installed
+        # ('url.yaml', table()),
     ],
     ids=[
         'bool', 'class', 'title', 'description', 'invalid', 'order',
-        'self', 'space-filename', 'space-property', 'url',
-    ]
+        'self', 'space-filename', 'space-property',
+
+        # FIXME: uncomment this when a newer version of Iolanta is installed
+        # 'url',
+    ],
 )
 def test_data(
     data_directory: Path,

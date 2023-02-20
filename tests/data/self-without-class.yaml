@@ -4,3 +4,4 @@ table:columns:
   - name
 table:rows:
   - name: boo
+    rdfs:label: badoom
