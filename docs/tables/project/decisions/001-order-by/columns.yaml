@@ -1,6 +1,0 @@
-table:class: ArdaCountries
-table:columns:
-  - $id: country-name
-    title: Name of the country
-    table:direction: desc
-    table:empty-values: first

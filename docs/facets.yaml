@@ -1,6 +1,0 @@
-- $id: side-by-side
-  iolanta:hasDefaultFacet:
-    $id: python://iolanta_tables_facets.SideBySide
-- $id: code
-  iolanta:hasDefaultFacet:
-    $id: python://iolanta_tables_facets.Code
