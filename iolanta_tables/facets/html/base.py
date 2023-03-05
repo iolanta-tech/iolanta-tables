@@ -4,7 +4,7 @@ from pathlib import Path
 from typing import Iterable, List
 
 import funcy
-from iolanta.facet import Facet
+from iolanta.facets.html.base import HTMLFacet
 from iolanta.models import NotLiteralNode
 
 from iolanta_tables.facets.html.models import Direction, EmptyValues, OrderBy
@@ -12,10 +12,8 @@ from iolanta_tables.models import TABLE
 
 
 @dataclass
-class IolantaTablesFacet(ABC, Facet):
+class IolantaTablesFacet(HTMLFacet, ABC):
     """Base for mkdocs-iolanta-tables facets."""
-
-    stored_queries_path: Path = Path(__file__).parent / 'sparql'
 
     def list_columns(
         self,

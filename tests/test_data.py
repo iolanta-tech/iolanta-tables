@@ -3,6 +3,7 @@ from typing import Type, Union
 
 import funcy
 import pytest
+import rich
 from dominate.tags import html_tag, table, tbody, td, th, thead, tr
 from iolanta.iolanta import Iolanta
 from iolanta.namespaces import IOLANTA, LOCAL
@@ -114,11 +115,16 @@ def test_data(
             )
 
     else:
+        rendered, stack = Iolanta().add(
+            data_directory / file_name,
+        ).render(
+            LOCAL.table,
+            environments=[IOLANTA.html],
+        )
+
+        rich.print(stack)
+
         assert str(
-            rendered := Iolanta().add(
-                data_directory / file_name,
-            ).render(
-                LOCAL.table,
-                environments=[IOLANTA.html],
-            ),
+            rendered,
         ) == str(expected), str(rendered)
+

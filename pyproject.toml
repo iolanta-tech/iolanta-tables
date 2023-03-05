@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "iolanta-tables"
-version = "0.1.0"
+version = "0.1.2"
 description = "Linked Data as tables"
 authors = ["Anatoly Scherbakov <altaisoft@gmail.com>"]
 license = "MIT"
@@ -9,7 +9,7 @@ packages = [{include = "iolanta_tables"}]
 
 [tool.poetry.dependencies]
 python = ">=3.10,<4.0"
-iolanta = "^1.0.2"
+iolanta = "^1.0.11"
 dominate = "^2.7.0"
 
 [tool.poetry.group.dev.dependencies]

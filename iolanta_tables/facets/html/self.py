@@ -1,10 +1,10 @@
-from iolanta.facet import Facet
+from iolanta.facets.html.base import HTMLFacet
 from more_itertools import first
 
 from iolanta_tables.models import TABLE
 
 
-class SelfFacet(Facet):
+class SelfFacet(HTMLFacet):
     """Render table:self property."""
 
     def show(self):

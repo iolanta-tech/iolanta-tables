@@ -4,6 +4,7 @@ from dominate.tags import html_tag, th, thead, tr
 from iolanta.namespaces import IOLANTA
 
 from iolanta_tables.facets.html.base import IolantaTablesFacet
+from iolanta_tables.models import TABLE
 
 
 class TableHeader(IolantaTablesFacet):
@@ -20,7 +21,7 @@ class TableHeader(IolantaTablesFacet):
             th(
                 self.render(
                     column,
-                    environments=[self.iri, IOLANTA.html],
+                    environments=[self.iri, TABLE.th, IOLANTA.html],
                 ),
             ) for column in columns
         ]

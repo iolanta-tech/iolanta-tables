@@ -1,5 +1,5 @@
 "@context":
-  table: https://mkdocs.iolanta.tech/tables/
+  table: https://iolanta.tech/tables/
 
   table:class:
     "@id": table:class
@@ -23,13 +23,13 @@
   table:direction:
     "@type": "@id"
     "@context":
-      "@base": https://mkdocs.iolanta.tech/tables/
+      "@base": https://iolanta.tech/tables/
 
   table:empty-values:
     "@type": "@id"
     "@context":
-      "@base": https://mkdocs.iolanta.tech/tables/
+      "@base": https://iolanta.tech/tables/
       first:
-        "@id": https://mkdocs.iolanta.tech/tables/first
+        "@id": https://iolanta.tech/tables/first
       last:
-        "@id": https://mkdocs.iolanta.tech/tables/last
+        "@id": https://iolanta.tech/tables/last

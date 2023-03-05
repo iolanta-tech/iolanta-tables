@@ -1,6 +1,6 @@
 - $id: table:Table
   rdfs:comment: "Definition of a table."
-  iolanta:instanceFacet:
+  iolanta:hasInstanceFacet:
     - $id: python://iolanta_tables.facets.html.Table
       iolanta:supports:
         $id: iolanta:html
@@ -19,7 +19,7 @@
 - $id: table:class
   rdfs:range:
     $id: table:ClassList
-    iolanta:instanceFacet:
+    iolanta:hasInstanceFacet:
       $id: python://iolanta_tables.facets.html.BodyClass
       iolanta:supports:
         $id: table:body
@@ -32,7 +32,7 @@
         $id: python://iolanta_tables.facets.html.TableRow
 
 - $id: table:Rows
-  iolanta:instanceFacet:
+  iolanta:hasInstanceFacet:
     $id: python://iolanta_tables.facets.html.BodyRows
     iolanta:supports:
       - $id: table:body
@@ -49,7 +49,7 @@
 - $id: table:rows
   rdfs:range:
     $id: table:Rows
-    iolanta:instanceFacet:
+    iolanta:hasInstanceFacet:
       $id: python://iolanta_tables.facets.html.TableRows
   iolanta:hasDefaultFacet:
     $id: python://iolanta_tables.facets.html.TableRow

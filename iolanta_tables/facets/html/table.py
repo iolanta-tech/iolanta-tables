@@ -6,10 +6,10 @@ from typing import Any, Dict, Iterable, List, Optional, Tuple, TypeVar
 import funcy
 from dominate.tags import table, td, th
 from dominate.util import raw
-from iolanta.facet import Facet
+from iolanta.facets.html.base import HTMLFacet
 from iolanta.iolanta import Iolanta
 from iolanta.models import NotLiteralNode
-from iolanta.renderer import HTML
+from iolanta.namespaces import IOLANTA
 from rdflib import URIRef
 
 from iolanta_tables.facets.html.errors import (
@@ -35,7 +35,7 @@ def construct_headers(
                 node=column,
                 # FIXME:
                 #   title: Use the table:columns blank node as environment here
-                environments=[table_iri, TABLE.th, HTML],
+                environments=[table_iri, TABLE.th, IOLANTA.html],
             ),
         ) for column in columns
     )
@@ -103,7 +103,7 @@ def render_row(
         cell_content = str(
             iolanta.render(
                 node=cell_value,
-                environments=[column, TABLE.td, HTML],
+                environments=[column, TABLE.td, IOLANTA.html],
             ),
         )
         yield td(raw(cell_content))
@@ -157,10 +157,8 @@ def order_rows(
 
 
 @dataclass
-class Table(Facet):
+class Table(HTMLFacet):
     """HTML table facet."""
-
-    stored_queries_path: Path = Path(__file__).parent / 'sparql'
 
     def retrieve_body_iri(self) -> NotLiteralNode:
         """Retrieve the node of table body."""
