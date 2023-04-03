@@ -1,4 +1,8 @@
 # Idea: http://www.snee.com/bobdc.blog/2014/04/rdf-lists-and-sparql.html
-SELECT ?column WHERE {
+SELECT ?column ?nested_column_list WHERE {
     $column_list rdf:rest*/rdf:first ?column .
+
+    OPTIONAL {
+        ?column table:columns ?nested_column_list .
+    }
 }

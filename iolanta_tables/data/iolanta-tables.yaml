@@ -47,6 +47,8 @@
     $id: python://iolanta_tables.facets.html.TableHeader
 
 - $id: table:rows
+  rdfs:domain:
+    $id: table:Table
   rdfs:range:
     $id: table:Rows
     iolanta:hasInstanceFacet:
@@ -55,8 +57,6 @@
     $id: python://iolanta_tables.facets.html.TableRow
 
 - $id: table:columns
-  rdfs:domain:
-    $id: table:Table
   rdfs:range:
     $id: table:ColumnList
 

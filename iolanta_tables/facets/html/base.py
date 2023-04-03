@@ -1,36 +1,53 @@
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
-from pathlib import Path
 from typing import Iterable, List
 
-import funcy
 from iolanta.facets.html.base import HTMLFacet
 from iolanta.models import NotLiteralNode
 
 from iolanta_tables.facets.html.models import Direction, EmptyValues, OrderBy
-from iolanta_tables.models import TABLE
+from iolanta_tables.models import TABLE, ColumnTree
 
 
 @dataclass
 class IolantaTablesFacet(HTMLFacet, ABC):
     """Base for mkdocs-iolanta-tables facets."""
 
+    def construct_column_trees(
+        self,
+        column_list_node: NotLiteralNode,
+    ) -> List[ColumnTree]:
+        rows = self.stored_query(
+            'columns.sparql',
+            column_list=column_list_node,
+        )
+
+        return [
+            ColumnTree(
+                column=row['column'],
+                children=self.construct_column_trees(
+                    column_list_node=nested_column_list,
+                ) if (
+                    nested_column_list := row.get('nested_column_list')
+                ) else [],
+            )
+            for row in rows
+        ]
+
+    def _extract_leaves(self, trees: List[ColumnTree]) -> Iterable[NotLiteralNode]:
+        for tree in trees:
+            if children := tree.children:
+                yield from self._extract_leaves(children)
+            else:
+                yield tree.column
+
     def list_columns(
         self,
         column_list: NotLiteralNode,
     ) -> List[NotLiteralNode]:
         """List of column IRIs for a table."""
-        rows = self.stored_query(
-            'columns.sparql',
-            column_list=column_list,
-        )
-
-        return list(
-            funcy.pluck(
-                'column',
-                rows,
-            ),
-        )
+        trees = self.construct_column_trees(column_list)
+        return list(self._extract_leaves(trees))
 
 
 class TableBody(IolantaTablesFacet):

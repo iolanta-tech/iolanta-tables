@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "iolanta-tables"
-version = "0.1.2"
+version = "0.1.3"
 description = "Linked Data as tables"
 authors = ["Anatoly Scherbakov <altaisoft@gmail.com>"]
 license = "MIT"
