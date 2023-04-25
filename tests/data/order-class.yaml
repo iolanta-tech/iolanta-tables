@@ -1,0 +1,11 @@
+$id: table
+table:columns:
+  - year
+table:class:
+  - $id: Cls
+    $reverse:
+      rdf:type:
+        - year: 2010
+        - year: 2000
+
+table:order-by: year

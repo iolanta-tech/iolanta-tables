@@ -215,3 +215,4 @@ fabric.properties
 site/
 
 .idea/
+.flakeheaven_cache

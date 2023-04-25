@@ -17,6 +17,8 @@
         $id: python://iolanta_tables.facets.html.self.TableHeader
 
 - $id: table:class
+  rdfs:domain:
+    $id: table:Table
   rdfs:range:
     $id: table:ClassList
     iolanta:hasInstanceFacet:

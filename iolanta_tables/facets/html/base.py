@@ -53,14 +53,6 @@ class IolantaTablesFacet(HTMLFacet, ABC):
 class TableBody(IolantaTablesFacet):
     """Table body facet."""
 
-    def construct_order_by_clause(self, order_by: List[OrderBy]) -> str:
-        if not order_by:
-            return ''
-
-        sortables = [
-            '',
-        ]
-
     def order_by(self) -> List[OrderBy]:
         """
         List of columns that we order by.
@@ -94,3 +86,32 @@ class TableBody(IolantaTablesFacet):
     @abstractmethod
     def select_instances(self) -> Iterable[NotLiteralNode]:
         """Instances of the table's class."""
+
+    def _construct_bindings_clause(self, order_by: List[OrderBy]) -> str:
+        return '\n'.join(
+            f'OPTIONAL {{ ?instance <{ordering.column}> ?order_by_{index} . }}'
+            for index, ordering in enumerate(order_by)
+        )
+
+    def _construct_order_by_clause(   # noqa: WPS210
+        self,
+        order_by: List[OrderBy],
+    ):
+        order_by_particles = [
+            f'?order_by_{index}'
+            for index, _ordering in enumerate(order_by)
+        ]
+
+        order_by_particles = [
+            particle if (
+                ordering.direction == Direction.ASC
+            ) else f'DESC({particle})'
+            for particle, ordering in zip(order_by_particles, order_by)
+        ]
+
+        order_by_clause = ', '.join(order_by_particles)
+
+        if order_by_clause:
+            order_by_clause = f'ORDER BY {order_by_clause}'
+
+        return order_by_clause

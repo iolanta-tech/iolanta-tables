@@ -8,9 +8,10 @@ table:columns:
 table:rows:
   - name: Ray
     color: Red
-    birthday: 2010-01-01
+    birthday: 2010-12-10
+
   - name: Smoky
     color: Gray
-    birthday: 2010-12-10
+    birthday: 2010-01-01
 
 table:order-by: birthday
