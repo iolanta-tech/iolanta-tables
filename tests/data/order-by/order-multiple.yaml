@@ -1,0 +1,19 @@
+$id: table
+table:columns:
+  - year
+  - rating
+table:class:
+  $reverse:
+    rdf:type:
+      - year: 2010
+        rating: 5
+      - year: 2010
+        rating: 1
+      - year: 2000
+        rating: 1
+      - year: 2000
+        rating: 5
+
+table:order-by:
+  - year
+  - rating

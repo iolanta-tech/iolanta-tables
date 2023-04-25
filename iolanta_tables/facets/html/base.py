@@ -109,7 +109,7 @@ class TableBody(IolantaTablesFacet):
             for particle, ordering in zip(order_by_particles, order_by)
         ]
 
-        order_by_clause = ', '.join(order_by_particles)
+        order_by_clause = ' '.join(order_by_particles)
 
         if order_by_clause:
             order_by_clause = f'ORDER BY {order_by_clause}'
