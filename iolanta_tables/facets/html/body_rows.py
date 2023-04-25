@@ -5,7 +5,6 @@ from dominate.tags import html_tag, tbody
 from rdflib import URIRef
 
 from iolanta_tables.facets.html.base import TableBody
-from iolanta_tables.facets.html.models import Direction
 
 
 class BodyRows(TableBody):
@@ -15,34 +14,15 @@ class BodyRows(TableBody):
         """Select instances, or rows, for the table."""
         order_by = self.order_by()
 
-        bindings_clause = '\n'.join(
-            f'OPTIONAL {{ ?instance <{ordering.column}> ?order_by_{index} . }}'
-            for index, ordering in enumerate(order_by)
-        )
+        bindings_clause = self._construct_bindings_clause(order_by=order_by)
+        order_by_clause = self._construct_order_by_clause(order_by=order_by)
 
-        order_by_particles = [
-            f'?order_by_{index}'
-            for index, _ordering in enumerate(order_by)
-        ]
-
-        order_by_particles = [
-            particle if (
-                ordering.direction == Direction.ASC
-            ) else f'DESC({particle})'
-            for particle, ordering in zip(order_by_particles, order_by)
-        ]
-
-        order_by_clause = ', '.join(order_by_particles)
-
-        if order_by_clause:
-            order_by_clause = f'ORDER BY {order_by_clause}'
-
-        query_text = f'''
+        query_text = f"""
             SELECT ?instance WHERE {{
                 $iri rdf:rest*/rdf:first ?instance .
                 {bindings_clause}
             }} {order_by_clause}
-        '''
+        """
 
         return list(
             funcy.pluck(

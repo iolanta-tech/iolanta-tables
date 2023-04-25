@@ -12,9 +12,28 @@ class BodyClass(TableBody):
 
     def select_instances(self) -> Iterable[NotLiteralNode]:
         """Instances of the table's class."""
-        return funcy.pluck(
-            'instance',
-            self.stored_query('instances-class.sparql', column_list=self.iri),
+        order_by = self.order_by()
+
+        bindings_clause = self._construct_bindings_clause(order_by=order_by)
+        order_by_clause = self._construct_order_by_clause(order_by=order_by)
+
+        query_text = f"""
+            SELECT ?instance WHERE {{
+                $iri rdf:first ?class .
+                ?instance a ?class .
+
+                {bindings_clause}
+            }} {order_by_clause}
+        """
+
+        return list(
+            funcy.pluck(
+                'instance',
+                self.query(
+                    query_text,
+                    iri=self.iri,
+                ),
+            ),
         )
 
     def show(self) -> Union[str, html_tag]:

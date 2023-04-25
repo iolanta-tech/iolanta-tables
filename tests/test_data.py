@@ -59,8 +59,8 @@ from yaml.parser import ParserError
                     ),
                 ),
                 tbody(
-                    tr(td('Ray'), td('Red'), td('2010-01-01')),
-                    tr(td('Smoky'), td('Gray'), td('2010-12-10')),
+                    tr(td('Smoky'), td('Gray'), td('2010-01-01')),
+                    tr(td('Ray'), td('Red'), td('2010-12-10')),
                 ),
             ),
         ),
@@ -127,4 +127,3 @@ def test_data(
         assert str(
             rendered,
         ) == str(expected), str(rendered)
-
