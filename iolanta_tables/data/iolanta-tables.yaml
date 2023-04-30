@@ -82,6 +82,8 @@
   rdfs:label: <td>
   iolanta:hasDefaultFacet:
     $id: python://iolanta.facets.html.Default
+    iolanta:supports:
+      $id: table:td
 
 - $id: python://iolanta.facets.html.bool_literal.BoolLiteral
   iolanta:supports:
