@@ -58,7 +58,7 @@ class TableRow(IolantaTablesFacet):
             td(
                 self.render(
                     cell_value,
-                    environments=[IOLANTA.html],
+                    environments=[TABLE.td, IOLANTA.html],
                 ),
             ) if cell_value is not None else td()
             for cell_value in maybe_cell_values

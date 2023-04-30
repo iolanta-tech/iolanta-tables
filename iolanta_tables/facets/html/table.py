@@ -87,28 +87,6 @@ def construct_row(
     }
 
 
-def render_row(
-    row: Row,
-    columns: List[URIRef],
-    iolanta: Iolanta,
-) -> Iterable[td]:
-    """Compile a sequence of table cells for a row."""
-    for column in columns:
-        try:
-            cell_value = row[column]
-        except KeyError:
-            yield td()
-            continue
-
-        cell_content = str(
-            iolanta.render(
-                node=cell_value,
-                environments=[column, TABLE.td, IOLANTA.html],
-            ),
-        )
-        yield td(raw(cell_content))
-
-
 def construct_sorter(order_by: List[Tuple[URIRef, bool]]):
     """Construct a sorting procedure for rows in a table."""
     def sorter(row: Row):   # noqa: WPS430
